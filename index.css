@@ -33,13 +33,29 @@ body {
 
 
 #input-btn {
-    width: 117px;
-    height: 42px;
-    padding: 9px 27.5px 9px 27.5px;
-    border-radius: 5px;
-    border: 0;
-    background-color: white;
+    position: relative;
+    margin-top: 10px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background: transparent;
+    border: 2px solid #00c2cb;
+    outline: 2px solid #00c2cb;
+    outline-offset: -2px;
+    font-size: 1.5rem;
+    color: #00c2cb;
+    font-weight: 500;
+    cursor: pointer;
+    transition: outline-offset 200ms ease;
 }
+
+#input-btn:hover {
+    color: #e0ffff;
+    outline-offset: 3px;
+}
+
+#input-btn:active{
+    transform: scale(0.95);
+  }
 
 #container {
     background: #F4F4F4;
