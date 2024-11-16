@@ -31,25 +31,39 @@ function resizeText(input) {
 inputElement.addEventListener("input", () => resizeText(inputElement)); //checks if text is overflowing and adjusts
 
 inputBtn.addEventListener("click", function() {
-    let num = inputElement.value.trim(); // Remove extra spaces
+    let num = inputElement.value.trim();
     
-    // Input Validation
+    //input validation and array object creation that iterates each object
     if (num === "" || isNaN(num) || parseFloat(num) < 0) {
         alert("Please enter a valid positive number");
         return;
     } else {
-        //length calc
-        let feet = (num / 0.3048).toFixed(3);
-        let meter = (num * 0.3048).toFixed(3);
-        para1.innerText = `${num} meters is ${feet} feet | ${num} feet is ${meter} meters`;
-        //volume calc
-        let gallon = (num / 3.785411784).toFixed(3);
-        let liter = (num * 3.785411784).toFixed(3);
-        para2.innerText = `${num} liters is ${gallon} gallons | ${num} gallons is ${liter} liters`;
-        //mass calc
-        let pound = (num / 0.45359237).toFixed(3);
-        let kilo = (num * 0.45359237).toFixed(3);
-        para3.innerText = `${num} kilos is ${pound} pounds | ${num} pounds is ${kilo} kilos`;
+        const conversions = [
+            {
+                from: 'meters',
+                to: 'feet',
+                factor: 0.3048,
+                element: para1
+            },
+            {
+                from: 'liters',
+                to: 'gallons',
+                factor: 3.785411784,
+                element: para2
+            },
+            {
+                from: 'kilos',
+                to: 'pounds',
+                factor: 0.45359237,
+                element: para3
+            }
+        ];
+    
+        conversions.forEach(({ from, to, factor, element }) => {
+            const toValue = (num / factor).toFixed(3);
+            const fromValue = (num * factor).toFixed(3);
+            element.innerText = `${num} ${from} is ${toValue} ${to} | ${num} ${to} is ${fromValue} ${from}`;
+        });
     }
 });
 
@@ -69,3 +83,4 @@ checkbox.addEventListener("change", () => {
         h2.style.color = isDarkMode ? "#CCC1FF" : "#5A537B"; // adjust h2 color based on mode
     });
 });
+
