@@ -1,5 +1,9 @@
 const inputElement = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
+const checkbox = document.getElementById("checkbox");
+const cont = document.getElementById("container");
+const cells = document.querySelectorAll(".cell");
+const paragraphs = document.querySelectorAll("p");
 const para1 = document.createElement("p");
 const para2 = document.createElement("p");
 const para3 = document.createElement("p");
@@ -10,6 +14,21 @@ para2.innerText = `0 liters is 0 gallons | 0 gallons is 0 liters`;
 document.getElementById("vol-el").appendChild(para2);
 para3.innerText = `0 kilos is 0 pounds | 0 pounds is 0 kilos`;
 document.getElementById("mass-el").appendChild(para3);
+
+function resizeText(input) {
+    let fontSize = parseInt(window.getComputedStyle(input).fontSize);
+
+    while (input.scrollWidth > input.offsetWidth) { //decrease text size when overflowing
+        fontSize--;
+        input.style.fontSize = fontSize + 'px';
+    }
+
+    while (input.scrollWidth < input.offsetWidth && fontSize < 50) { //increase text size when deleting text up to original text size
+        fontSize++;
+        input.style.fontSize = fontSize + 'px';
+      }
+}
+inputElement.addEventListener("input", () => resizeText(inputElement)); //checks if text is overflowing and adjusts
 
 inputBtn.addEventListener("click", function() {
     let num = inputElement.value.trim(); // Remove extra spaces
@@ -34,19 +53,19 @@ inputBtn.addEventListener("click", function() {
     }
 });
 
-function resizeText(input) {
-    let fontSize = parseInt(window.getComputedStyle(input).fontSize);
+checkbox.addEventListener("change", () => {
+    container.classList.toggle("dark-mode");
+    const isDarkMode = container.classList.contains("dark-mode"); //boolean to check dark mode
+    cells.forEach(cell => cell.classList.toggle("dark-mode2")); //
+    [para1, para2, para3].forEach(para => { //dynamically changing text to dark mode for all of the paragraphs
+        if (isDarkMode) {
+            para.style.color = "#ffffff";
+        } else {
+            para.style.color = "#000000";
+        }
+    });
 
-    while (input.scrollWidth > input.offsetWidth) { //decrease text size when overflowing
-        fontSize--;
-        input.style.fontSize = fontSize + 'px';
-    }
-
-    while (input.scrollWidth < input.offsetWidth && fontSize < 50) { //increase text size when deleting text up to original text size
-        fontSize++;
-        input.style.fontSize = fontSize + 'px';
-      }
-}
-
-inputElement.addEventListener("input", () => resizeText(inputElement)); //checks if text is overflowing
-
+    document.querySelectorAll("h2").forEach(h2 => {
+        h2.style.color = isDarkMode ? "#CCC1FF" : "#5A537B"; // adjust h2 color based on mode
+    });
+});

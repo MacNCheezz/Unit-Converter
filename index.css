@@ -1,7 +1,9 @@
+
 body {
     max-width: 550px;
     margin: 0;
     font-family: Inter;
+    
 }
 
 #hero {
@@ -64,7 +66,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 5px 0px;
-
+    transition: background 0.2s linear;
 }
 
 .cell {
@@ -75,10 +77,73 @@ body {
     /* border: 1px solid red; */
     margin: 15px;
     text-align: center;
-
+    transition: background 0.2s linear;
 }
 
 h2 {
     color: #5A537B;
 
+}
+
+.sun-icon, .moon-icon {
+    font-size: 14px;
+    transition: opacity 0.5s ease;
+}
+
+.sun-icon {
+    opacity: 1;
+}
+
+.moon-icon {
+    opacity: 0;
+}
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-label {
+    background-color: #111;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ball {
+    background-color: #fff;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+    transform: translateX(24px);
+}
+
+.checkbox:checked + .checkbox-label .sun-icon {
+    opacity: 0;
+}
+
+.checkbox:checked + .checkbox-label .moon-icon {
+    opacity: 1;
+}
+
+* {box-sizing: border-box;}
+
+.dark-mode {
+    background-color: #292c35 !important;
+}
+
+.dark-mode2 {
+    background-color: #273549 !important;
 }
