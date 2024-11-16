@@ -1,6 +1,7 @@
 
 body {
-    max-width: 550px;
+    width: 400px;
+    min-height: auto;
     margin: 0;
     font-family: Inter;
     
@@ -13,6 +14,7 @@ body {
     background: #6943FF;
     color: white;
     height: auto;
+    padding: 10px 0px;
     font-weight: 800;
     padding-bottom: 20px;
 
@@ -22,8 +24,8 @@ body {
     background-color: #6943FF;
     color: white;
     text-align: center;
-    width: 150px;
-    height: 85px;
+    width: 120px;
+    height: 65px;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
@@ -37,7 +39,7 @@ body {
 #input-btn {
     position: relative;
     margin-top: 10px;
-    padding: 15px 30px;
+    padding: 5px 15px;
     border-radius: 10px;
     background: transparent;
     border: 2px solid #00c2cb;
@@ -71,8 +73,8 @@ body {
 
 .cell {
     background: white;
-    width: 500px;
-    height: 108.57px;
+    width: 350px;
+    height: 65px;
     border-radius: 5px;
     /* border: 1px solid red; */
     margin: 15px;
@@ -81,6 +83,7 @@ body {
 }
 
 h2 {
+    margin: 10px 0;
     color: #5A537B;
 
 }
